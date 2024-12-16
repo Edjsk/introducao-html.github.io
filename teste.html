@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor BRL para Bitcoin</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            font-size: 1rem;
+        }
+
+        button {
+            cursor: pointer;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Conversor de Moeda BRL para Bitcoin</h1>
+    <div class="container">
+        <label for="brl">Valor em Reais (BRL):</label>
+        <br>
+        <input type="number" id="brl" placeholder="Digite o valor em BRL">
+        <br>
+        <button onclick="converterParaBitcoin()">Converter</button>
+        <div class="result" id="resultado"></div>
+    </div>
+
+    <script>
+        function converterParaBitcoin() {
+            const cotacaoBitcoin = 300000; // Cotação aproximada: 1 Bitcoin = 300,000 BRL (valor fictício)
+            const brl = document.getElementById('brl').value;
+            const resultado = document.getElementById('resultado');
+
+            if (brl <= 0 || isNaN(brl)) {
+                resultado.innerHTML = 'Por favor, digite um valor válido em BRL!';
+                return;
+            }
+
+            const valorBitcoin = (brl / cotacaoBitcoin).toFixed(8); // Calcula e ajusta para 8 casas decimais
+            resultado.innerHTML = `Valor em Bitcoin (BTC): ${valorBitcoin}`;
+        }
+    </script>
+</body>
+
+</html>
