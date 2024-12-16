@@ -1,18 +1,83 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="pt-BR">
 
 <head>
-    <title>Olá Mundo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversão BRL ↔ Bitcoin</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            display: inline-block;
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #343a40;
+        }
+
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 1rem;
+            width: 80%;
+        }
+
+        button {
+            background-color: #198754;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #157347;
+        }
+
+        .result {
+            margin-top: 15px;
+            color: #333;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Meu nome é</h1>
+    <h1>Conversor de BRL para Bitcoin</h1>
+    <div class="container">
+        <label for="valor">Valor em BRL:</label><br>
+        <input type="number" id="valor" placeholder="Digite o valor"><br>
+        <button onclick="converter()">Calcular</button>
+        <div id="resultado" class="result"></div>
+    </div>
 
-    <h3>Edwesley Janoski Gonçalves</h3>
+    <script>
+        function converter() {
+            const cotacaoBTC = 300000; // Cotação fictícia
+            const brl = parseFloat(document.getElementById('valor').value);
+            const resultado = document.getElementById('resultado');
 
-    <h2>Universidade Estadual de Ponta Grossa</h2>
+            if (isNaN(brl) || brl <= 0) {
+                resultado.textContent = "Por favor, insira um valor válido!";
+                return;
+            }
 
-    <p><strong>Talento Tech</strong></p>
+            const bitcoin = (brl / cotacaoBTC).toFixed(8);
+            resultado.textContent = `Valor em Bitcoin: ${bitcoin} BTC`;
+        }
+    </script>
 </body>
 
 </html>
